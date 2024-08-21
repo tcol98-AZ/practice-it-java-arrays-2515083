@@ -1,7 +1,30 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class App {
   
   public static Integer findSecondSmallestItem(Integer[] arr) {
-    return 0;
+    if (arr.length < 2) {
+      return null;
+    }
+    int min1 = Integer.MAX_VALUE;
+    int min2 = Integer.MAX_VALUE;
+
+    // List<Integer> sortedList = Arrays.stream(arr).sorted().toList();
+    for (Integer item : arr) {
+      if (item < min1) {
+        min2 = min1;
+        min1 = item;
+      }
+      if (item > min1 && item < min2) {
+        min2 = item;
+      }
+    }
+    if (min2 == Integer.MAX_VALUE) {
+      return null;
+    }
+
+    return min2;
   }
     
   public static void main(String args[]) {
